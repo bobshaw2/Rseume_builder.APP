@@ -5,7 +5,9 @@ import React from 'react'
 
 export async function POST(req: Request) {
   const { data } = await req.json()
-  const buffer = await renderToBuffer(<ResumePDF data={data} />)
+  const buffer = await renderToBuffer(
+    React.createElement(ResumePDF, { data })
+  )
   return new NextResponse(buffer, {
     headers: {
       'Content-Type': 'application/pdf',
