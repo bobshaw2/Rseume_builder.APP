@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   const buffer = await renderToBuffer(
     React.createElement(ResumePDF, { data })
   )
-  return new NextResponse(buffer, {
+  return new NextResponse( new Uint8Array(buffer) , {
     headers: {
       'Content-Type': 'application/pdf',
       'Content-Disposition': 'attachment; filename="resume.pdf"'
